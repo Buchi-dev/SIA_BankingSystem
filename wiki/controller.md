@@ -1,0 +1,21 @@
+### Controllers
+
+- **User Controller**
+  - `register`: Register a new user
+  - `login`: Authenticate user credentials
+  - `profile`: Get user profile (excluding password)
+- **Account Controller**
+  - `create`: Create a new account
+  - `view`: View account details
+  - `update`: Update account info
+  - `delete`: Delete an account
+  - `balance`: Check account balance
+- **Transaction Controller**
+  - `deposit`: Deposit funds
+  - `withdraw`: Withdraw funds
+  - `transfer`: Transfer funds between accounts
+  - `history`: Get transaction history
+- **External System Controller**
+  - `register`: Register an external system
+  - `payment`: Process a payment (placeholder)
+  - `balanceInquiry`: External system balance inquiry (placeholder)

@@ -1,0 +1,23 @@
+### Models
+
+- **User**
+  - `username` (unique, required)
+  - `password_hash` (required)
+  - `role` (customer/admin)
+  - `created_at`
+- **Account**
+  - `user_id` (ref: User, required)
+  - `balance` (default: 0)
+  - `status` (active/inactive/closed)
+  - `created_at`
+- **Transaction**
+  - `from_account_id`, `to_account_id` (ref: Account)
+  - `amount`
+  - `type` (deposit/withdrawal/transfer)
+  - `timestamp`
+  - `status` (pending/completed/failed)
+- **ExternalSystem**
+  - `system_name` (unique, required)
+  - `api_key` (required)
+  - `contact`
+  - `registered_at`

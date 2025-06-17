@@ -236,6 +236,129 @@ body {
     background: #2d6cdf;
     text-decoration: none;
 }
+.sidebar-footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+    color: #888;
+    font-size: 0.97rem;
+}
+.sidebar-help {
+    margin-top: 0.7rem;
+    text-align: left;
+}
+.sidebar-help .help-link {
+    color: #2d6cdf;
+    text-decoration: underline;
+    font-weight: 500;
+    cursor: pointer;
+}
+.wiki-header {
+    background: linear-gradient(90deg, #eaf1fb 0%, #f4f6fa 100%);
+    padding: 1.5rem 2rem 1rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(45,108,223,0.06);
+}
+.wiki-header h1 {
+    font-size: 2.2rem;
+    color: #1a4fa0;
+    margin: 0 0 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.wiki-badge {
+    background: #2d6cdf;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 8px;
+    margin-left: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.wiki-desc {
+    color: #444;
+    font-size: 1.1rem;
+    margin: 0;
+}
+.info-box {
+    background: #eaf1fb;
+    border-left: 4px solid #2d6cdf;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin: 1.2rem 0;
+    color: #1a4fa0;
+    font-size: 1.05rem;
+}
+.tab-container {
+    display: flex;
+    gap: 0.7rem;
+    margin-bottom: 1.2rem;
+}
+.tab-btn {
+    background: #eaf1fb;
+    color: #2d6cdf;
+    border: none;
+    padding: 0.6rem 1.3rem;
+    border-radius: 8px 8px 0 0;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+.tab-btn.active {
+    background: #2d6cdf;
+    color: #fff;
+}
+.tab-content {
+    display: none;
+    background: #fff;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 2px 8px rgba(45,108,223,0.06);
+    padding: 1.5rem 1.2rem;
+    margin-bottom: 2rem;
+}
+.tab-content.active {
+    display: block;
+}
+pre, code {
+    background: #f4f6fa;
+    color: #1a4fa0;
+    border-radius: 6px;
+    font-size: 1rem;
+    overflow-x: auto;
+}
+pre {
+    margin: 0.7rem 0 1.2rem 0;
+    padding: 1rem 1.2rem;
+    background: #f4f6fa;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(45,108,223,0.04);
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+    font-size: 1.02rem;
+    line-height: 1.5;
+    white-space: pre;
+    overflow-x: auto;
+}
+pre code {
+    display: block;
+    padding: 0;
+    background: none;
+    color: inherit;
+    border-radius: 0;
+    font-family: inherit;
+    font-size: inherit;
+    white-space: pre;
+}
+code:not(pre code) {
+    padding: 0.2em 0.4em;
+    font-size: 0.98em;
+    background: #eaf1fb;
+    color: #2d6cdf;
+    border-radius: 4px;
+}
 @media (max-width: 1200px) {
     .wiki-main {
         margin-left: 0;

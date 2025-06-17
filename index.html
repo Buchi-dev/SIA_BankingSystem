@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
+
 <body>
     <header class="main-header">
         <div class="header-content">
@@ -21,73 +23,332 @@
                     <li class="sidebar-section"><span><i class="fa-solid fa-circle-info"></i> General</span>
                         <ul>
                             <li><a href="#overview"><i class="fa-regular fa-file-lines"></i> Overview</a></li>
-                            <li><a href="#faq"><i class="fa-regular fa-circle-question"></i> FAQ</a></li>
-                            <li><a href="#credits"><i class="fa-regular fa-star"></i> Credits</a></li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-section"><span><i class="fa-solid fa-book"></i> Wiki</span>
-                        <ul>
-                            <li><a href="#installation" class="active"><i class="fa-solid fa-download"></i> Installation</a></li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-section"><span><i class="fa-solid fa-gears"></i> Setup</span>
-                        <ul>
-                            <li><a href="#client-setup"><i class="fa-solid fa-user"></i> Client Setup</a></li>
-                            <li>Server Setup
-                                <ul>
-                                    <li><a href="#hosting"><i class="fa-solid fa-server"></i> Hosting Provider</a></li>
-                                    <li><a href="#self-hosted"><i class="fa-solid fa-house"></i> Self Hosted</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="sidebar-section"><span><i class="fa-solid fa-sliders"></i> Configuration</span>
-                        <ul>
-                            <li><a href="#client-config"><i class="fa-solid fa-file-code"></i> Client Config File</a></li>
-                            <li><a href="#server-config"><i class="fa-solid fa-file-code"></i> Server Config File</a></li>
+                            <li><a href="#features"><i class="fa-solid fa-list-check"></i> Features</a></li>
+                            <li><a href="#models"><i class="fa-solid fa-database"></i> Models</a></li>
+                            <li><a href="#controllers"><i class="fa-solid fa-diagram-project"></i> Controllers</a></li>
+                            <li><a href="#routes"><i class="fa-solid fa-road"></i> Routes</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
+            <div class="sidebar-footer">
+                <hr>
+                <div class="sidebar-help">
+                    <i class="fa-solid fa-circle-question"></i> Need help? <br>
+                    <a href="#" class="help-link">Contact Support</a>
+                </div>
+            </div>
         </aside>
         <main class="wiki-main">
-            <section id="installation">
-                <h1><i class="fa-solid fa-download"></i> Installation</h1>
-                <p>You always have to install SIA Banking System on your client and your server. If you don't have it installed, you won't be able to use any of the system's features.</p>
-                <p>It doesn't matter which environment you are using. All of them are cross compatible.</p>
-                <strong>If you have issues with these environments, visit their respective support channels for help:</strong>
+            <div class="wiki-header">
+                <h1>Wired City Banking System <span class="wiki-badge">API Docs</span></h1>
+                <p class="wiki-desc">A modern, user-friendly API documentation for your city banking project. Use the sidebar to navigate between sections.</p>
+            </div>
+            <section id="overview">
+                <h2><i class="fa-regular fa-file-lines"></i> Overview</h2>
+                <p>This documentation provides an overview of the server-side architecture, including controllers, models, routes, and features.</p>
+                <div class="info-box">
+                    <strong>Project Purpose:</strong> <em>Placeholder for a brief description of the Wired City Banking System and its goals.</em>
+                </div>
+            </section>
+            <section id="features">
+                <h2><i class="fa-solid fa-list-check"></i> Features</h2>
                 <ul>
-                    <li><a href="#fabric">Fabric</a></li>
-                    <li><a href="#neoforge">NeoForge</a></li>
-                    <li><a href="#forge">Forge</a></li>
-                    <li><a href="#spigot">Spigot</a></li>
-                    <li><a href="#paper">Paper/Velocity/Waterfall</a></li>
-                    <li><a href="#quilt">Quilt</a></li>
+                    <li>User registration, authentication, and profile management</li>
+                    <li>Account creation, viewing, updating, deletion, and balance checking</li>
+                    <li>Transaction operations: deposit, withdraw, transfer, and history</li>
+                    <li>External system registration, payment, and balance inquiry</li>
+                    <li>RESTful API with Express.js and MongoDB (Mongoose)</li>
+                    <li>CORS and JSON body parsing middleware</li>
+                </ul>
+                <p><strong>More features coming soon...</strong></p>
+            </section>
+            <section id="models">
+                <h2><i class="fa-solid fa-database"></i> Models</h2>
+                <h3>User</h3>
+                <ul>
+                    <li><strong>username</strong> (unique, required)</li>
+                    <li><strong>password_hash</strong> (required)</li>
+                    <li><strong>role</strong> (customer/admin)</li>
+                    <li><strong>created_at</strong></li>
+                </ul>
+                <pre><code>{
+  "username": "johndoe",
+  "password_hash": "...",
+  "role": "customer",
+  "created_at": "2025-06-17T12:00:00Z"
+}</code></pre>
+                <h3>Account</h3>
+                <ul>
+                    <li><strong>user_id</strong> (ref: User, required)</li>
+                    <li><strong>balance</strong> (default: 0)</li>
+                    <li><strong>status</strong> (active/inactive/closed)</li>
+                    <li><strong>created_at</strong></li>
+                </ul>
+                <pre><code>{
+  "user_id": "60f7c2...",
+  "balance": 1000,
+  "status": "active",
+  "created_at": "2025-06-17T12:00:00Z"
+}</code></pre>
+                <h3>Transaction</h3>
+                <ul>
+                    <li><strong>from_account_id</strong>, <strong>to_account_id</strong> (ref: Account)</li>
+                    <li><strong>amount</strong></li>
+                    <li><strong>type</strong> (deposit/withdrawal/transfer)</li>
+                    <li><strong>timestamp</strong></li>
+                    <li><strong>status</strong> (pending/completed/failed)</li>
+                </ul>
+                <pre><code>{
+  "from_account_id": "60f7c2...",
+  "to_account_id": "60f7c3...",
+  "amount": 500,
+  "type": "transfer",
+  "timestamp": "2025-06-17T12:00:00Z",
+  "status": "completed"
+}</code></pre>
+                <h3>ExternalSystem</h3>
+                <ul>
+                    <li><strong>system_name</strong> (unique, required)</li>
+                    <li><strong>api_key</strong> (required)</li>
+                    <li><strong>contact</strong></li>
+                    <li><strong>registered_at</strong></li>
+                </ul>
+                <pre><code>{
+  "system_name": "CityParking",
+  "api_key": "abc123...",
+  "contact": "admin@cityparking.com",
+  "registered_at": "2025-06-17T12:00:00Z"
+}</code></pre>
+            </section>
+            <section id="controllers">
+                <h2><i class="fa-solid fa-diagram-project"></i> Controllers</h2>
+                <h3>User Controller</h3>
+                <ul>
+                    <li><strong>register</strong>: Register a new user</li>
+                    <li><strong>login</strong>: Authenticate user credentials</li>
+                    <li><strong>profile</strong>: Get user profile (excluding password)</li>
+                </ul>
+                <h3>Account Controller</h3>
+                <ul>
+                    <li><strong>create</strong>: Create a new account</li>
+                    <li><strong>view</strong>: View account details</li>
+                    <li><strong>update</strong>: Update account info</li>
+                    <li><strong>delete</strong>: Delete an account</li>
+                    <li><strong>balance</strong>: Check account balance</li>
+                </ul>
+                <h3>Transaction Controller</h3>
+                <ul>
+                    <li><strong>deposit</strong>: Deposit funds</li>
+                    <li><strong>withdraw</strong>: Withdraw funds</li>
+                    <li><strong>transfer</strong>: Transfer funds between accounts</li>
+                    <li><strong>history</strong>: Get transaction history</li>
+                </ul>
+                <h3>External System Controller</h3>
+                <ul>
+                    <li><strong>register</strong>: Register an external system</li>
+                    <li><strong>payment</strong>: Process a payment (placeholder)</li>
+                    <li><strong>balanceInquiry</strong>: External system balance inquiry (placeholder)</li>
                 </ul>
             </section>
-            <section id="fabric">
-                <h2><i class="fa-solid fa-cube"></i> Fabric</h2>
-                <p>For the Fabric version, you need to have the Fabric Loader installed on your client/server.</p>
-                <p>Then copy the SIA Banking System mod to the mods folder.</p>
+            <section id="routes">
+                <h2><i class="fa-solid fa-road"></i> Routes</h2>
+                <div class="tab-container">
+                    <button class="tab-btn active" data-tab="user">User</button>
+                    <button class="tab-btn" data-tab="account">Account</button>
+                    <button class="tab-btn" data-tab="transaction">Transaction</button>
+                    <button class="tab-btn" data-tab="external">External System</button>
+                </div>
+                <div class="tab-content active" id="tab-user">
+                    <h3>User Routes (<code>/api/users</code>)</h3>
+                    <ul>
+                        <li>POST /register<br><em>Register a new user.</em><br>
+                            <strong>Request Example:</strong>
+                            <pre><code>{
+  "username": "johndoe",
+  "password": "password123"
+}</code></pre>
+                            <strong>Response Example:</strong>
+                            <pre><code>{
+  "message": "User registered successfully"
+}</code></pre>
+                        </li>
+                        <li>POST /login<br><em>Authenticate user credentials.</em><br>
+                            <strong>Request Example:</strong>
+                            <pre><code>{
+  "username": "johndoe",
+  "password": "password123"
+}</code></pre>
+                            <strong>Response Example:</strong>
+                            <pre><code>{
+  "token": "jwt-token-here"
+}</code></pre>
+                        </li>
+                        <li>GET /profile<br><em>Get user profile (requires authentication).</em><br>
+                            <strong>Response Example:</strong>
+                            <pre><code>{
+  "username": "johndoe",
+  "role": "customer"
+}</code></pre>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="tab-account">
+                    <h3>Account Routes (<code>/api/accounts</code>)</h3>
+                    <ul>
+                        <li>POST /create<br><em>Create a new account for the authenticated user.</em><br>
+                            <strong>Response Example:</strong>
+                            <pre><code>{
+  "account_id": "60f7c2...",
+  "balance": 0,
+  "status": "active"
+}</code></pre>
+                        </li>
+                        <li>GET /view/:id<br><em>View account details by account ID.</em><br>
+                            <strong>Response Example:</strong>
+                            <pre><code>{
+  "account_id": "60f7c2...",
+  "user_id": "60f7c1...",
+  "balance": 1000,
+  "status": "active"
+}</code></pre>
+                        </li>
+                        <li>PUT /update/:id<br><em>Update account information.</em><br>
+                            <strong>Request Example:</strong>
+                            <pre><code>{
+  "status": "inactive"
+}</code></pre>
+                            <strong>Response Example:</strong>
+                            <pre><code>{
+  "message": "Account updated successfully"
+}</code></pre>
+                        </li>
+                        <li>DELETE /delete/:id<br><em>Delete an account by ID.</em><br>
+                            <strong>Response Example:</strong>
+                            <pre><code>{
+  "message": "Account deleted successfully"
+}</code></pre>
+                        </li>
+                        <li>GET /balance/:id<br><em>Check account balance by account ID.</em><br>
+                            <strong>Response Example:</strong>
+                            <pre><code>{
+  "balance": 1000
+}</code></pre>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="tab-transaction">
+                    <h3>Transaction Routes (<code>/api/transactions</code>)</h3>
+                    <ul>
+                        <li>POST /deposit<br><em>Deposit funds into an account.</em><br>
+                            <strong>Request Example:</strong>
+                            <pre><code>{
+  "account_id": "60f7c2...",
+  "amount": 500
+}</code></pre>
+                            <strong>Response Example:</strong>
+                            <pre><code>{
+  "message": "Deposit successful",
+  "balance": 1500
+}</code></pre>
+                        </li>
+                        <li>POST /withdraw<br><em>Withdraw funds from an account.</em><br>
+                            <strong>Request Example:</strong>
+                            <pre><code>{
+  "account_id": "60f7c2...",
+  "amount": 200
+}</code></pre>
+                            <strong>Response Example:</strong>
+                            <pre><code>{
+  "message": "Withdrawal successful",
+  "balance": 1300
+}</code></pre>
+                        </li>
+                        <li>POST /transfer<br><em>Transfer funds between accounts.</em><br>
+                            <strong>Request Example:</strong>
+                            <pre><code>{
+  "from_account_id": "60f7c2...",
+  "to_account_id": "60f7c3...",
+  "amount": 100
+}</code></pre>
+                            <strong>Response Example:</strong>
+                            <pre><code>{
+  "message": "Transfer successful",
+  "from_balance": 1200,
+  "to_balance": 1100
+}</code></pre>
+                        </li>
+                        <li>GET /history<br><em>Get transaction history for an account.</em><br>
+                            <strong>Response Example:</strong>
+                            <pre><code>[
+  {
+    "type": "deposit",
+    "amount": 500,
+    "timestamp": "2025-06-17T12:00:00Z"
+  },
+  {
+    "type": "withdrawal",
+    "amount": 200,
+    "timestamp": "2025-06-17T13:00:00Z"
+  }
+]</code></pre>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="tab-external">
+                    <h3>External System Routes (<code>/api/external-systems</code>)</h3>
+                    <ul>
+                        <li>POST /register<br><em>Register an external system.</em><br>
+                            <strong>Request Example:</strong>
+                            <pre><code>{
+  "system_name": "CityParking",
+  "api_key": "abc123...",
+  "contact": "admin@cityparking.com"
+}</code></pre>
+                            <strong>Response Example:</strong>
+                            <pre><code>{
+  "message": "External system registered successfully"
+}</code></pre>
+                        </li>
+                        <li>POST /payment<br><em>Process a payment (placeholder).</em><br>
+                            <strong>Request Example:</strong>
+                            <pre><code>{
+  "system_name": "CityParking",
+  "amount": 100
+}</code></pre>
+                            <strong>Response Example:</strong>
+                            <pre><code>{
+  "message": "Payment processed"
+}</code></pre>
+                        </li>
+                        <li>GET /balance-inquiry<br><em>External system balance inquiry (placeholder).</em><br>
+                            <strong>Response Example:</strong>
+                            <pre><code>{
+  "system_name": "CityParking",
+  "balance": 5000
+}</code></pre>
+                        </li>
+                    </ul>
+                </div>
             </section>
-            <section id="neoforge">
-                <h2><i class="fa-solid fa-cube"></i> NeoForge</h2>
-                <p>Instructions for NeoForge setup...</p>
-            </section>
-            <!-- Add more sections as needed -->
         </main>
-        <aside class="rightbar">
-            <div class="rightbar-title"><i class="fa-solid fa-list"></i> On this page</div>
-            <ul class="rightbar-list">
-                <li><a href="#fabric">Fabric</a></li>
-                <li><a href="#neoforge">NeoForge</a></li>
-                <li><a href="#forge">Forge</a></li>
-                <li><a href="#quilt">Quilt</a></li>
-                <li><a href="#spigot">Bukkit/Spigot/Paper</a></li>
-                <li><a href="#paper">Velocity/BungeeCord/Waterfall</a></li>
-            </ul>
-        </aside>
     </div>
     <script src="scripts.js"></script>
+    <script>
+    // Tab switching for routes
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(tc => tc.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById('tab-' + this.dataset.tab).classList.add('active');
+            });
+        });
+    });
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,21 @@
+### Routes
+
+- **User Routes** (`/api/users`)
+  - `POST /register`
+  - `POST /login`
+  - `GET /profile`
+- **Account Routes** (`/api/accounts`)
+  - `POST /create`
+  - `GET /view/:id`
+  - `PUT /update/:id`
+  - `DELETE /delete/:id`
+  - `GET /balance/:id`
+- **Transaction Routes** (`/api/transactions`)
+  - `POST /deposit`
+  - `POST /withdraw`
+  - `POST /transfer`
+  - `GET /history`
+- **External System Routes** (`/api/external-systems`)
+  - `POST /register`
+  - `POST /payment`
+  - `GET /balance-inquiry`
