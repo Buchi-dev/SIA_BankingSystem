@@ -1,22 +1,22 @@
 # Wired City Banking System Project Checklist (Wiki)
 
-## 1. Models (MySQL)
-- [ ] Design and create User table (id, username, password_hash, role, created_at, etc.)
-- [ ] Design and create Account table (id, user_id, balance, status, created_at, etc.)
-- [ ] Design and create Transaction table (id, from_account_id, to_account_id, amount, type, timestamp, status, etc.)
-- [ ] Design and create ExternalSystem table (id, system_name, api_key, contact, registered_at, etc.)
+## 1. Models (MongoDB)
+- [x] Design and create User table (id, username, password_hash, role, created_at, etc.)
+- [x] Design and create Account table (id, user_id, balance, status, created_at, etc.)
+- [x] Design and create Transaction table (id, from_account_id, to_account_id, amount, type, timestamp, status, etc.)
+- [x] Design and create ExternalSystem table (id, system_name, api_key, contact, registered_at, etc.)
 
 ## 2. Controllers (Business Logic)
-- [ ] Implement User controller (registration, authentication, profile management)
-- [ ] Implement Account controller (CRUD operations, balance checks)
-- [ ] Implement Transaction controller (deposit, withdraw, transfer, history)
-- [ ] Implement ExternalSystem controller (registration, payment, balance inquiry)
+- [x] Implement User controller (registration, authentication, profile management)
+- [x] Implement Account controller (CRUD operations, balance checks)
+- [x] Implement Transaction controller (deposit, withdraw, transfer, history)
+- [x] Implement ExternalSystem controller (registration, payment, balance inquiry)
 
 ## 3. Routes / API Endpoints
-- [ ] Set up User routes (register, login, profile)
-- [ ] Set up Account routes (create, view, update, delete)
-- [ ] Set up Transaction routes (deposit, withdraw, transfer, history)
-- [ ] Set up ExternalSystem routes (register, payment, balance inquiry)
+- [x] Set up User routes (register, login, profile)
+- [x] Set up Account routes (create, view, update, delete)
+- [x] Set up Transaction routes (deposit, withdraw, transfer, history)
+- [x] Set up ExternalSystem routes (register, payment, balance inquiry)
 
 ## 4. Security
 - [ ] Implement JWT authentication for users/admins
