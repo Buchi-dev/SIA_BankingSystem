@@ -9,17 +9,18 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/api/billing', bRoutes);
+app.get('/', (req, res) => {
+  res.send('Billing Microservice is running');
+});
 
 const MONGO_URI = process.env.BILLING_MONGO_URI;
-if (!MONGO_URI) {
-  console.error('MongoDB URI not set in environment variables.');
-  process.exit(1);
-}
+const PORT = process.env.BILLING_PORT;
+const HOST = process.env.HOST;
 
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGO_URI)
   .then(() => {
-    app.listen(() => {
-      console.log('Billing microservice running');
+    app.listen(PORT, HOST, () => {
+      console.log(`Billing microservice running on http://${HOST}:${PORT}`);
     });
   })
   .catch((err) => {

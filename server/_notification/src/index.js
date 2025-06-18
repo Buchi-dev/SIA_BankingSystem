@@ -10,16 +10,18 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/notification', nRoutes);
 
-const MONGO_URI = process.env.NOTIFICATION_MONGO_URI;
-if (!MONGO_URI) {
-  console.error('MongoDB URI not set in environment variables.');
-  process.exit(1);
-}
+app.get('/', (req, res) => {
+  res.send('Notification Microservice is running');
+});
 
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+const MONGO_URI = process.env.NOTIFICATION_MONGO_URI;
+const PORT = process.env.NOTIFICATION_PORT;
+const HOST = process.env.HOST;
+
+mongoose.connect(MONGO_URI)
   .then(() => {
-    app.listen(() => {
-      console.log('Notification microservice running');
+    app.listen(PORT, HOST, () => {
+      console.log(`Notification microservice running on http://${HOST}:${PORT}`);
     });
   })
   .catch((err) => {

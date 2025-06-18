@@ -1,0 +1,57 @@
+version: '3.8'
+services:
+  account_management:
+    build: ./_accountManagement
+    env_file: ../.env
+    ports:
+      - "4001:4001"
+    environment:
+      - ACCOUNT_MANAGEMENT_PORT=${ACCOUNT_MANAGEMENT_PORT}
+      - ACCOUNT_MANAGEMENT_MONGO_URI=${ACCOUNT_MANAGEMENT_MONGO_URI}
+      - HOST=${HOST}
+    restart: unless-stopped
+    working_dir: /app
+  payment:
+    build: ./_payment
+    env_file: ../.env
+    ports:
+      - "4002:4002"
+    environment:
+      - PAYMENT_PORT=${PAYMENT_PORT}
+      - PAYMENT_MONGO_URI=${PAYMENT_MONGO_URI}
+      - HOST=${HOST}
+    restart: unless-stopped
+    working_dir: /app
+  apikey:
+    build: ./_apikey
+    env_file: ../.env
+    ports:
+      - "4003:4003"
+    environment:
+      - APIKEY_PORT=${APIKEY_PORT}
+      - APIKEY_MONGO_URI=${APIKEY_MONGO_URI}
+      - HOST=${HOST}
+    restart: unless-stopped
+    working_dir: /app
+  billing:
+    build: ./_billing
+    env_file: ../.env
+    ports:
+      - "4004:4004"
+    environment:
+      - BILLING_PORT=${BILLING_PORT}
+      - BILLING_MONGO_URI=${BILLING_MONGO_URI}
+      - HOST=${HOST}
+    restart: unless-stopped
+    working_dir: /app
+  notification:
+    build: ./_notification
+    env_file: ../.env
+    ports:
+      - "4005:4005"
+    environment:
+      - NOTIFICATION_PORT=${NOTIFICATION_PORT}
+      - NOTIFICATION_MONGO_URI=${NOTIFICATION_MONGO_URI}
+      - HOST=${HOST}
+    restart: unless-stopped
+    working_dir: /app

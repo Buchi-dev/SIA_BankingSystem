@@ -10,16 +10,18 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/payment', paymentRoutes);
 
-const MONGO_URI = process.env.PAYMENT_MONGO_URI;
-if (!MONGO_URI) {
-  console.error('MongoDB URI not set in environment variables.');
-  process.exit(1);
-}
+app.get('/', (req, res) => {
+  res.send('Payment Microservice is running');
+});
 
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+const MONGO_URI = process.env.PAYMENT_MONGO_URI;
+const PORT = process.env.PAYMENT_PORT;
+const HOST = process.env.HOST;
+
+mongoose.connect(MONGO_URI)
   .then(() => {
-    app.listen(() => {
-      console.log('Payment microservice running');
+    app.listen(PORT, HOST, () => {
+      console.log(`Payment microservice running on http://${HOST}:${PORT}`);
     });
   })
   .catch((err) => {

@@ -1,4 +1,4 @@
-const { Invoice, InvoiceItem, Payment } = require('../b.model');
+const { Invoice, InvoiceItem, Payment } = require('./b.model');
 
 exports.createInvoice = async (req, res) => {
   try {

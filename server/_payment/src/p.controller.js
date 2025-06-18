@@ -1,4 +1,4 @@
-const { Account, Transaction } = require('../p.model');
+const { Account, Transaction } = require('./p.model');
 
 exports.createAccount = async (req, res) => {
   try {

@@ -1,4 +1,4 @@
-const APIKey = require('../ak.model');
+const APIKey = require('./ak.model');
 
 // Create API key
 exports.createAPIKey = async (req, res) => {

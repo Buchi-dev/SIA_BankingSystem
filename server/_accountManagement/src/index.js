@@ -10,16 +10,18 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/account-management', amRoutes);
 
-const MONGO_URI = process.env.ACCOUNT_MANAGEMENT_MONGO_URI;
-if (!MONGO_URI) {
-  console.error('MongoDB URI not set in environment variables.');
-  process.exit(1);
-}
+app.get('/', (req, res) => {
+  res.send('Account Management Microservice is running');
+});
 
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+const MONGO_URI = process.env.ACCOUNT_MANAGEMENT_MONGO_URI;
+const PORT = process.env.ACCOUNT_MANAGEMENT_PORT;
+const HOST = process.env.HOST;
+
+mongoose.connect(MONGO_URI)
   .then(() => {
-    app.listen(() => {
-      console.log('Account Management microservice running');
+    app.listen(PORT, HOST, () => {
+      console.log(`Account Management microservice running on http://${HOST}:${PORT}`);
     });
   })
   .catch((err) => {
