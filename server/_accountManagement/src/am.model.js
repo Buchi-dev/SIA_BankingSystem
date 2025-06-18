@@ -26,9 +26,36 @@ const AuditLogSchema = new mongoose.Schema({
   timestamp: { type: Date, default: Date.now }
 });
 
+const BankAccountSchema = new mongoose.Schema({
+  accountName: { 
+    type: String, 
+    required: [true, 'Account name is required'] 
+  },
+  accountType: { 
+    type: String, 
+    required: [true, 'Account type is required'],
+    enum: ['savings', 'checking', 'business']
+  },
+  balance: { 
+    type: Number, 
+    required: [true, 'Initial balance is required'],
+    min: [0, 'Balance must be positive']
+  },
+  status: { 
+    type: String, 
+    default: 'active',
+    enum: ['active', 'inactive', 'frozen']
+  },
+  createdAt: { 
+    type: Date, 
+    default: Date.now 
+  }
+});
+
 module.exports = {
   Business: mongoose.model('Business', BusinessSchema),
   BusinessUser: mongoose.model('BusinessUser', BusinessUserSchema),
   Role: mongoose.model('Role', RoleSchema),
-  AuditLog: mongoose.model('AuditLog', AuditLogSchema)
+  AuditLog: mongoose.model('AuditLog', AuditLogSchema),
+  BankAccount: mongoose.model('BankAccount', BankAccountSchema)
 };
