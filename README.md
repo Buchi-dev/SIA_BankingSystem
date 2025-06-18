@@ -1,14 +1,18 @@
 # Changelog
 
-All notable changes to this project are documented here.
+> **Table of Contents**
+> - [v0.0.2 - 2025-06-18](#002---2025-06-18)
+> - [v0.0.1 - 2025-06-17](#001---2025-06-17)
+
+---
 
 ## [0.0.2] - 2025-06-18
 ### Added
-- Dockerization for all microservices using Dockerfiles and docker-compose.
-- Environment variable support via `.env` files for all services.
-- File-based logging for requests and important events in each microservice (logs directory).
-- LAN access support for all services (bind to 0.0.0.0).
-- Removed deprecated MongoDB connection options for compatibility with latest drivers.
+- Docker support for all microservices (Dockerfiles and docker-compose).
+- Centralized environment variable management via `.env` files.
+- LAN access enabled (services bind to 0.0.0.0).
+- Updated MongoDB connection for latest driver compatibility.
+
 
 ---
 
